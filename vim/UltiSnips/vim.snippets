@@ -1,0 +1,14 @@
+snippet -- "Commented line of dashes" b
+" ---------------------------------------------
+endsnippet
+
+# expands " into " " everywhere except on a new line to avoid clash with Vim comments
+priority 1
+snippet " "Quotation mark" iA
+"
+endsnippet
+
+priority 2
+snippet "(.)\"" "paired quotation marks" rA
+`!p snip.rv = match.group(1)`"${1:${VISUAL:}}"$0
+endsnippet

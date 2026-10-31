@@ -1,0 +1,116 @@
+"BASIC CONFIG
+" ---------------------------------------------
+set nocompatible "Use Vim and not vi
+syntax enable
+filetype on "enable filetype detection
+filetype plugin on "load file-specific plugins
+filetype indent on "load file-specific indentation
+set encoding=utf-8
+set number "shows line numbers
+set relativenumber "shows line numbers relative to the current line
+set noshowmode 		"in favour of airline statusline
+set showcmd
+set spelllang=en_gb
+let mapleader = " "
+" --------------------------------------------- 
+" ---------------------------------------------
+"END BASIC CONFIG
+
+
+" PLUGINS VIA Vim-Plug
+" ---------------------------------------------
+call plug#begin(expand('~/.vim/plugged'))
+"Global
+Plug 'junegunn/vim-plug'
+Plug 'SirVer/ultisnips'
+Plug 'vim-airline/vim-airline'
+Plug 'arcticicestudio/nord-vim'
+Plug 'tpope/vim-commentary'
+
+"Filetype specific
+Plug 'lervag/vimtex' "Gives tex filetype and sytax support
+
+call plug#end()
+" ---------------------------------------------
+"END PLUGINS
+
+"COLOR CONFIG
+" ---------------------------------------------
+colorscheme nord
+augroup texcolors
+	au!
+	au ColorScheme * highlight! link Conceal       Special
+	au ColorScheme * highlight! link texCmdGreek   Special
+	au ColorScheme * highlight! link texMathOper   texDelim
+	au ColorScheme * highlight! link texMathDelim  texDelim
+	au ColorScheme * highlight texDelim gui=bold guifg=#8ebd6b "See below
+augroup end
+
+if (has("termguicolors"))
+  " Force true color; see https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6
+  if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  endif
+  set termguicolors
+endif
+" ---------------------------------------------
+"END COLOR CONFIG
+
+"MAPPINGS
+" ---------------------------------------------
+
+"Insert mode
+" ---------------------------------------------
+inoremap jk <ESC>
+
+" ---------------------------------------------
+"Navigation
+" ---------------------------------------------
+" navigate to line start and end from home row
+" note that this overrides H and L to move the cursor to page top and page bottom
+noremap H g^
+noremap L g$
+
+" mappings for faster split window navigation
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" mappings for navigating buffers
+noremap <leader>b :bnext<CR>
+noremap <leader>B :bprevious<CR>
+
+" ---------------------------------------------
+"Miscellaneous
+" ---------------------------------------------
+" edit and source vimrc file on the fly
+nnoremap <leader>ev :vsplit $MYVIMRC<cr> 
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" edit and source snippets on the fly
+nnoremap <leader>esf :vsplit $MYVIMDIR/UltiSnips/tex/fonts.snippets<cr>
+nnoremap <leader>ese :vsplit $MYVIMDIR/UltiSnips/tex/fonts.snippets<cr>
+nnoremap <leader>es :vsplit $MYVIMDIR/UltiSnips/tex/fonts.snippets<cr>
+nnoremap <leader>es :vsplit $MYVIMDIR/UltiSnips/tex/fonts.snippets<cr>
+nnoremap <leader>es :vsplit $MYVIMDIR/UltiSnips/tex/fonts.snippets<cr>
+
+" Make Y work like D or C (not vi compatible)
+noremap Y y$
+
+" ---------------------------------------------
+"END MAPPINGS
+
+
+"PLUGIN CONFIGURATION 
+" ---------------------------------------------
+"let g:airline_theme = 'nord'
+let g:airline_powerline_fonts = 1
+
+let g:UltiSnipsExpandTrigger = '<Tab>'
+let g:UltiSnipsJumpForwardTrigger = '<Tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+" ---------------------------------------------
+"END PLUGIN CONFIGURATION
+

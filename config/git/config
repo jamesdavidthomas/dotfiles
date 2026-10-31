@@ -1,0 +1,14 @@
+[user]
+	name = James
+	email = jamesdavidthomas@outlook.co.nz
+[credential "https://github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[init]
+	defaultBranch = main
+[credential]
+	helper = /home/james/.dotnet/tools/git-credential-manager
+	credentialStore = gpg
+[credential "https://dev.azure.com"]
+	useHttpPath = true

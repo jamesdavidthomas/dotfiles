@@ -1,0 +1,18 @@
+# Quick edit for aliases
+alias ea="vim ~/.bash_aliases"
+alias sa="source ~/.bash_aliases"
+
+# Some Git aliases
+alias gg="git status"
+alias ggd="git diff"
+alias gga="git add"
+alias ggc="git commit"
+alias ggp="git push"
+alias ggrm="git rm"
+alias ggpm="git push origin main"
+alias ggl="git log"
+alias ggb="git branch"
+alias ggr="git restore"
+alias ggs="git switch"
+alias ggi="git init"
+alias ggls="git ls-files"
