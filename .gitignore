@@ -42,6 +42,6 @@ tags
 # Persistent undo
 [._]*.un~
 # Plugin files
-/vim/Plugged
+/vim/plugged
 
 
